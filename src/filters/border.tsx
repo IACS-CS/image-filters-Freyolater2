@@ -1,25 +1,48 @@
 import type { Filter } from "../types";
 import { hexToRGBA } from "../utils";
+import { getIndexer } from "../utils";
+
+const R = 0
+const G = 1
+const B = 2
+const A = 3
 
 type BorderFilterOptions = {
-  /* Define options here, as we will get them
-  in our apply function -- this needs to match
-  the list of options provided below. I'll provide
-  three example options to show one of each type */
   color: string;
   size: number;
 };
 
 export const Border: Filter<BorderFilterOptions> = {
   name: "Border",
-  apply: (pixels, width, height, options) => {
-    // We can now access our options with
-    // e.g. options.color, options.strength, etc.
+  apply: (pixels,width,height,options) => {
     let getIndices = getIndexer(pixels,width,height)
     for (let row = 0; row < height; row++) {
       for (let col = 0; col < width; col++) {
         const indices = getIndices(row,col);
-        let redValue 
+        let redValue = pixels[indices[R]]
+      const borderwidth = width * 0.05
+      if (row < borderwidth) {
+        pixels[indices[R]] = 0;
+        pixels[indices[G]] = 0;
+        pixels[indices[B]] = 0;
+      }
+      if (col < borderwidth) {
+        pixels[indices[R]] = 0;
+        pixels[indices[G]] = 0;
+        pixels[indices[B]] = 0;
+      }
+
+      if (row > height - borderwidth) {
+        pixels[indices[R]] = 0;
+        pixels[indices[G]] = 0;
+        pixels[indices[B]] = 0;
+      }
+
+      if (col > width - borderwidth) {
+        pixels[indices[R]] = 0;
+        pixels[indices[G]] = 0;
+        pixels[indices[B]] = 0;
+      }
     // Note that "color" options give you a string (e.g. a hex code)
     // and our utils library has a convenience function to convert
     // from RGB (or RGBA) hex codes into an array of numbers (0-255)
