@@ -4,7 +4,7 @@ import sampleGrid from "./samples/grid";
 import sampleVignette from "./samples/vignette";
 import {Brightness} from "./brightness";
 import {Blueness} from "./blueness";
-import {Border} from "../border";
+import {Border} from "./border";
 const filters: Filter[] = [
   Brightness,
   Blueness,
