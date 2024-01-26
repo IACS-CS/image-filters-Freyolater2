@@ -6,9 +6,9 @@ import {Brightness} from "./brightness";
 import {Blueness} from "./blueness";
 import {Border} from "./border";
 const filters: Filter[] = [
+  Border,
   Brightness,
   Blueness,
-  Border,
   sampleRoseColoredGlasses,
   sampleGrid,
   sampleVignette,
