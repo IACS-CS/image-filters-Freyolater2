@@ -7,6 +7,8 @@ export type FilterOptionPercentage = {
   name: string;
   default: number;
   type: "percentage";
+  min?: number;
+  max?: number;
 };
 export type FilterOptionNumber = {
   name: string;
