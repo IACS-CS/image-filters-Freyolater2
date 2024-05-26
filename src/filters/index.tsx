@@ -9,9 +9,9 @@ const filters: Filter[] = [
   Border,
   Brightness,
   Blueness,
-  sampleRoseColoredGlasses,
-  sampleGrid,
-  sampleVignette,
+  // sampleRoseColoredGlasses,
+  // sampleGrid,
+  // sampleVignette,
 ];
 
 export default filters;
