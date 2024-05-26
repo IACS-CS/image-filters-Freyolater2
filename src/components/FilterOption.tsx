@@ -52,8 +52,8 @@ const FilterOptionComponent: React.FC<FilterOptionProps> = ({
             type="range"
             name={option.name}
             value={currentValue as number}
-            min="0"
-            max="100"
+            min={option.min || 0}
+            max={option.max || 100}
             step=".1"
             onChange={handleChange}
           />
